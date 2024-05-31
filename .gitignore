@@ -60,4 +60,4 @@ src/public/images/*.jpg
 src/public/images/*.jpeg
 src/public/images/*.gif
 
-!public/images/.gitkeep
+!src/public/images/.gitkeep
