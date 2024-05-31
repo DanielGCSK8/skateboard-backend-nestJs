@@ -54,3 +54,10 @@ pids
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+src/public/images/*.png
+src/public/images/*.jpg
+src/public/images/*.jpeg
+src/public/images/*.gif
+
+!public/images/.gitkeep
