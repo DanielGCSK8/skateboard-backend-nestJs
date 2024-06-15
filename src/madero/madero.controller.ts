@@ -57,6 +57,10 @@ export class MaderoController {
     @Delete(':id')
     async deleteMadero(@Param('id') id: String) {
         try {
+            const oldMadero = await this.maderoService.getMaderosById(Number(id));
+            if(oldMadero.image) {
+                await unlink('src/public/images/' + oldMadero.image);
+            }
             return await this.maderoService.deleteMadero(Number(id));
         } catch (error) {
             throw new NotFoundException("No existe el madero a eliminar")
@@ -86,7 +90,7 @@ export class MaderoController {
         try {
             const oldMadero = await this.maderoService.getMaderosById(Number(id));
             if(image && oldMadero.image) {
-                await unlink(oldMadero.image);
+                await unlink('src/public/images/' + oldMadero.image);
             }
             return await this.maderoService.updateMadero(Number(id), data, image);
         } catch (error) {

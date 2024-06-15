@@ -22,7 +22,7 @@ export class MaderoService {
     async createMadero(data: Madero, image?: Express.Multer.File): Promise<Madero> {
         let imageUrl = null;
         if(image) {
-            imageUrl = `src/public/images/${image.filename}`;
+            imageUrl = `${image.filename}`;
         }
 
         return this.prisma.madero.create({
@@ -36,9 +36,8 @@ export class MaderoService {
     async updateMadero(id: number, data: Madero, image?: Express.Multer.File): Promise<Madero> {
         let imageUrl;
         const oldMadero = await this.prisma.madero.findUnique({ where: { id: id } });
-    
         if(image) {
-            imageUrl = `src/public/images/${image.filename}`;
+            imageUrl = `${image.filename}`;
         } else if(oldMadero.image) {
             imageUrl = oldMadero.image;
         }
